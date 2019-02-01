@@ -16,7 +16,11 @@ jobs:
     docker:
       - image: gradle:alpine
     steps:
-      - run: echo "hello from deploy"
+      - run:
+          name: Deploy Master to CloudFoundry
+          command: |
+            ./gradlew cfPush -PcfUsername=${cfUsername} -PcfPassword=${cfPassword}
+
 workflows:
   version: 2
   build_and_test:

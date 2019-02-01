@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Deploy Master to CloudFoundry
           command: |
-            ./gradlew cfPush -PcfUsername=${cfUsername} -PcfPassword=${cfPassword}
+            ./gradlew cfPush -PcfUsername=$CFUSER -PcfPassword=$CFPASS
 
 workflows:
   version: 2

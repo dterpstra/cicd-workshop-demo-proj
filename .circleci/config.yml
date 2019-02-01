@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: jarlehansen/alpine-java-node-gradle:latest
+      - image: karlrun/java-node-gradle:latest
     steps:
       - checkout
       - run: ./gradlew assemble
   test:
     docker:
-      - image: jarlehansen/alpine-java-node-gradle:latest
+      - image: karlrun/java-node-gradle:latest
     steps:
       - run: ./gradlew check

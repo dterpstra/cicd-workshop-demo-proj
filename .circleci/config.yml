@@ -2,8 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: gradle:jdk8-alpine
-      - image: node:current-slim
+      - image: karlrun/java-node-gradle:latest
     steps:
       - checkout
       - run: ./gradlew assemble
@@ -15,7 +14,7 @@ jobs:
       - run: ./gradlew check
   deploy:
     docker:
-      - image: karlrun/java-node-gradle:latest
+      - image: gradle:alpine
     steps:
       - run: echo "hello from deploy"
 workflows:
@@ -26,4 +25,6 @@ workflows:
       - test:
           requires:
             - build
-      - deploy
+      - deploy:
+          requires:
+            - test

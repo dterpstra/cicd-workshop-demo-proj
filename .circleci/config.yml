@@ -10,10 +10,19 @@ jobs:
     docker:
       - image: karlrun/java-node-gradle:latest
     steps:
+      - checkout
       - run: ./gradlew check
+  deploy:
+    docker:
+      - image: karlrun/java-node-gradle:latest
+    steps:
+      - run: echo "hello from deploy"
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
       - test
+          requires:
+            - build
+      - deploy

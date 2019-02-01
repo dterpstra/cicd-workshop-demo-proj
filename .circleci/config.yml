@@ -11,3 +11,9 @@ jobs:
       - image: karlrun/java-node-gradle:latest
     steps:
       - run: ./gradlew check
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test

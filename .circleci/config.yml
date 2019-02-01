@@ -6,4 +6,8 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew assemble
+  test:
+    docker:
+      - image: jarlehansen/alpine-java-node-gradle:latest
+    steps:
       - run: ./gradlew check

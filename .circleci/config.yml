@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: karlrun/java-node-gradle:latest
+      - image: gradle:jdk8-alpine
+      - image: node:current-slim
     steps:
       - checkout
       - run: ./gradlew assemble

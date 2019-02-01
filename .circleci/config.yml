@@ -16,6 +16,7 @@ jobs:
     docker:
       - image: gradle:alpine
     steps:
+      - checkout
       - run:
           name: Deploy Master to CloudFoundry
           command: |
